@@ -62,8 +62,9 @@ function openModal(e) {
       closeModal();
     }
   }
-
+  // console.log('hi')
   // FIXME: hide non-modal content from screen readers
+  document.querySelector('.wrapper').setAttribute('aria-hidden',true);
 }
 
 function closeModal() {
@@ -73,6 +74,7 @@ function closeModal() {
 
   // Set focus back to element that had it before the modal was opened
   focusedElementBeforeModal.focus();
-
+  // console.log('hi2')
   // FIXME: don't forget to make main content screen reader accessible again.
+  document.querySelector('.wrapper').removeAttribute('aria-hidden');  
 }

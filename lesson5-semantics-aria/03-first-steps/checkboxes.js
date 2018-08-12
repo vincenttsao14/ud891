@@ -19,7 +19,7 @@
 
     this.el.addEventListener('keydown', this.handleKeyDown.bind(this));
     this.el.addEventListener('click', this.toggle.bind(this));
-
+    console.log('checkbox', this.el)
     // Any other set-up we want to do here?
   }
 
@@ -27,6 +27,7 @@
     switch(e.keyCode) {
       case VK_ENTER:
       case VK_SPACE: {
+        console.log('handleKeyDown')
         this.toggle();
         break;
       }
@@ -34,17 +35,16 @@
   };
 
   Checkbox.prototype.toggle = function() {
+    console.log('toggle', this.el)
     if (this.el.hasAttribute('checked')) {
+      this.el.setAttribute('aria-checked', 'false');
       this.el.removeAttribute('checked');
-
-      // Hmm.
-
+      console.log('uncheck')
     } else {
-      this.el.setAttribute('checked', '');
-
-      // Hmmmmm.
-
-    }
+      this.el.setAttribute('aria-checked', 'true');
+      this.el.setAttribute('checked', true);
+      console.log('checked')
+    };
   };
 
   var checkboxes = slice(document.querySelectorAll('.checkbox'));

@@ -19,7 +19,7 @@
     this.buttons = slice(this.el.querySelectorAll('.radio'));
     this.focusedIdx = 0;
     this.focusedButton = this.buttons[this.focusedIdx];
-
+    console.log('radio')
     this.el.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
@@ -30,8 +30,12 @@
       case VK_LEFT: {
 
         e.preventDefault();
-
         // This seems like a good place to do some stuff :)
+        if (this.focusedIdx === 0) {
+          this.focusedIdx = 4;
+        } else {
+          this.focusedIdx--;
+        };
 
         break;
 
@@ -41,8 +45,20 @@
       case VK_RIGHT: {
 
         e.preventDefault();
-
+        if (this.focusedIdx === 4) {
+          this.focusedIdx = 0;
+        } else {
+          this.focusedIdx++;
+        };
+        // this.focusedButton.tabIndex = -1;
+        // let next = this.focusedButton.nextElementSibling;
+        // console.log(next)
+        // next.tabIndex = 0;
+        // next.checked = true
+        // console.log(next)
+        // console.log(this.focusedButton)
         // This seems like a good place to do some stuff :)
+
 
         break;
       }

@@ -1,10 +1,17 @@
 page('/', function() {
   page.redirect('/what-is-vegemite');
+
 });
 
+
+  firstTime = true;  
+  console.log(firstTime)
+  
 page('/:slug', function(context) {
   // This will match any value after the first / in the url. For example, if
   // the url was /foo, the value of slug would be "foo".
+
+
   var slug = context.params.slug;
 
   // Remove is-active class from previous menu item and section
@@ -19,8 +26,23 @@ page('/:slug', function(context) {
   newMenuItem.classList.add('is-active');
   newPage.classList.add('is-active');
 
+  if (firstTime) {
+    firstTime = false;
+    return;
+  } else {
+    newPage.querySelector('h2').focus();
+  };
+
+
+
 });
 
 page({
   hashbang: true
 });
+
+
+function myFunction () {
+  console.log('hi')
+  document.getElementById('veg').focus();
+};
